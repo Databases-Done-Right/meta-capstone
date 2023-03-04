@@ -1,7 +1,11 @@
+import HomepageHero from "./HomepageHero"
+import Specials from "./components/Specials/Specials"
+
 const Main = () => {
     return (
       <main>
-        Main secrion
+        <HomepageHero />
+        <Specials />
       </main>
     );
   }

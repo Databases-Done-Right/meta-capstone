@@ -5,8 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width:1200px;
-  margin:0px auto;
+  max-width:100%;
 }
 
 code {
@@ -14,20 +13,221 @@ code {
     monospace;
 }
 
+header, footer .container, #homepage_hero, #specials_container {
+  max-width:1060px;
+  margin:auto;
+  padding:0px 30px;
+}
+
+a, a:visited {
+  color:#495e57;
+}
+
+.fullwidth_container { background-color:#495e57; padding:30px 0px; }
+
+.cta_button {
+  padding:10px 20px;
+  background-color:#f4ce14;
+  border:solid 1px #000;
+  border-radius:5px;
+  font-size:18px;
+  font-weight:bold;
+  font-family:Karla;
+  cursor:pointer;
+}
+
+.cta_button:hover {
+  color:#fff;
+  border-color:#fff;
+}
+
+header {
+  display:grid;
+  grid-template-columns:(1fr, 5fr);
+}
+header > img {
+  grid-column:1 / 2;
+}
+
+header > nav {
+  grid-column:2 / 3;
+  text-align:right;
+}
+
+#homepage_hero {
+  display:grid;
+  grid-template-columns:(1fr, 5fr);
+  color:#fff;
+  font-size:1.5em;
+  gap:80px;
+}
+
+#homepage_hero h1 {
+  margin-bottom:0px;
+}
+#homepage_hero h3 {
+  margin-top:0px;
+}
+
+#homepage_hero button {
+  margin-top:60px;
+}
+
+#homepage_hero > div:nth-child(1) {
+  grid-column:1 / 2;
+}
+#homepage_hero > div:nth-child(2) {
+  grid-column:2 / 3;
+}
+
+
+#homepage_hero img { max-width:450px; border-radius:5px; border:solid 1px #fff; }
+
+ul.horizontal_menu {
+  list-style-type:none;
+}
+
+ul.horizontal_menu li {
+  display:inline-block;
+  padding:5px 10px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+ul.horizontal_menu li a, ul.horizontal_menu li a:visited {
+  text-decoration:none;
+  color:#495e57;
+}
+
+#specials_container {
+  display:grid;
+  grid-template-columns:(1fr, 1fr, 1fr);
+  gap:30px;
+  margin-top:40px;
+}
+
+#specials_container > div:nth-child(1) {
+  grid-column:1 / 2;
+}
+#specials_container > div:nth-child(2) {
+  grid-column:2 / 3;
+}
+#specials_container > div:nth-child(3) {
+  grid-column:3 / 4;
+}
+
+#specials_container img {
+  max-width:100%;
+  width:100%;
+  border:solid 1px #495e57;
+  border-radius:5px;
+}
+
+#specials_container h4 span {
+  float:right;
+  color:#495e57;
+}
+
+#specials_container a, #specials_container a:visited {
+  text-decoration:none;
+  font-size:.8em;
+}
+
 footer {
+  border-top:solid 1px #495e57;
+  padding-top:40px;
+  margin-top:60px;
+}
+footer > div {
   display:grid;
   grid-template-columns:(1fr, 1fr, 1fr, 1fr);
   gap:20px;
 }
-footer > div:nth-child(1) {
+footer > div > div:nth-child(1) {
   grid-column:1 / 2;
 }
-footer > div:nth-child(2) {
+footer > div > div:nth-child(2) {
   grid-column:2 / 3;
 }
-footer > div:nth-child(3) {
+footer > div > div:nth-child(3) {
   grid-column:3 / 4;
 }
-footer > div:nth-child(4) {
+footer > div > div:nth-child(4) {
   grid-column:4 / 5;
+}
+
+footer ul li a, footer ul li a:visited {
+  text-decoration:none; 
+  font-size:20px;
+  color:#495e57;
+}
+
+footer ul {
+  list-style-type:none;
+  padding-left:0px;
+}
+
+@media only screen and (max-width: 810px) {
+  header > img {
+    grid-column:1 / 2;
+    grid-row:1 / 2;
+    width:auto;
+    margin:0px auto;
+    padding-top:30px;
+  }
+
+  header > nav {
+    grid-column:1 / 2;
+    grid-row: 2 / 3;
+    text-align:center;
+  }
+
+  #homepage_hero > div:nth-child(1) {
+    grid-column:1 / 2;
+    grid-row: 1 / 2;
+    text-align:center;
+  }
+  #homepage_hero > div:nth-child(2) {
+    grid-column:1 / 2;
+    grid-row: 2 / 3;
+    text-align:center;
+  }
+
+  #homepage_hero > div:nth-child(2) img {
+    max-width:100%;
+  }
+
+  #specials_container > div:nth-child(1) {
+    grid-column:1 / 4;
+    grid-row: 1 / 2;
+  }
+  #specials_container > div:nth-child(2) {
+    grid-column:1 / 4;
+    grid-row: 2 / 3;
+  }
+  #specials_container > div:nth-child(3) {
+    grid-column:1 / 4;
+    grid-row: 3 / 4;
+  }
+
+  footer > div {
+    grid-template-columns:(1fr 1fr 1fr);
+  }
+  footer > div > div:nth-child(1) {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+    text-align:center;
+  }
+  footer > div > div:nth-child(2) {
+    grid-column:1 / 2;
+    grid-row: 2 / 3;
+  }
+  footer > div > div:nth-child(3) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+  footer > div > div:nth-child(4) {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+  }
 }

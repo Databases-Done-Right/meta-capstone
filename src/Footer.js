@@ -3,6 +3,7 @@ import footer_image from "./footer-logo.jpg"
 const Footer = () => {
     return (
       <footer>
+        <div class="container">
         <div>
             <img src={footer_image} />
         </div>
@@ -29,6 +30,7 @@ const Footer = () => {
                 <li><a href="https://www.facebook.com">Facebook</a></li>
                 <li><a href="https://www.linkedin.com">Linked In</a></li>
             </ul>
+        </div>
         </div>
       </footer>
     );
