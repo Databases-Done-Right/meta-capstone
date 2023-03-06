@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-header, footer .container, #homepage_hero, #specials_container {
+header, footer .container, #homepage_hero, #specials_container, #backstory_container, #testimonials_container, #reservation_container {
   max-width:1060px;
   margin:auto;
   padding:0px 30px;
@@ -24,6 +24,7 @@ a, a:visited {
 }
 
 .fullwidth_container { background-color:#495e57; padding:30px 0px; }
+.fullwidth_container2 { background-color:#ffffff; border-top:solid 1px #495e57; padding:30px 0px; text-align:center; }
 
 .cta_button {
   padding:10px 20px;
@@ -101,7 +102,7 @@ ul.horizontal_menu li a, ul.horizontal_menu li a:visited {
 
 #specials_container {
   display:grid;
-  grid-template-columns:(1fr, 1fr, 1fr);
+  grid-template-columns: 1fr  1fr  1fr;
   gap:30px;
   margin-top:40px;
 }
@@ -131,6 +132,96 @@ ul.horizontal_menu li a, ul.horizontal_menu li a:visited {
 #specials_container a, #specials_container a:visited {
   text-decoration:none;
   font-size:.8em;
+}
+
+#testimonials_container {
+  margin-top:100px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap:50px;
+  text-align:center;
+}
+
+#testimonials_container img {
+  max-width:100%;
+}
+
+#testimonials_container .customer_image_and_name > img {
+  border-radius:10px;
+  border:solid 1px #ddd;
+  padding:1px;
+}
+
+#testimonials_container img.the_rating {
+  max-width:120px;
+  margin:0px auto;
+  margin-bottom:10px;
+ }
+
+#testimonials_container > div:nth-child(1) {
+  grid-column: 1 / 2;
+}
+#testimonials_container > div:nth-child(2) {
+  grid-column: 2 / 3;
+}
+#testimonials_container > div:nth-child(3) {
+  grid-column: 3 / 4;
+}
+#testimonials_container > div:nth-child(4) {
+  grid-column: 4 / 5;
+}
+
+.fullwidth_container2 > div > img {
+  max-width:100%;
+  padding:0px 50px;
+  box-sizing:border-box;
+}
+#reservation_container {
+  text-align:left;
+  margin-top:80px;
+  margin:0px auto;
+}
+#tfn__reservations > div {
+  font-size:1.4em;
+  width:400px;
+  margin:0px auto;
+  margin-bottom:10px;
+}
+#tfn__reservations > div:nth-child(1) {
+  margin-top:40px;
+}
+#tfn__reservations > div:nth-child(5) {
+  margin-top:40px;
+  text-align:center;
+}
+#tfn__reservations > div:nth-child(5) button {
+  padding-left:50px;
+  padding-right:50px;
+}
+#tfn__reservations > div label { width:170px; min-width:170px; max-width:170px; display:inline-block; }
+#tfn__reservations > div input, #tfn__reservations > div select { width:180px; background-color:#ddd; border-radius:10px; padding:10px; font-size:1.2em; display:inline-block; }
+
+#backstory_container {
+  margin-top:100px;
+  display:grid;
+  grid-template-columns:(1fr, 1fr);
+  gap:50px;
+}
+
+#backstory_container div:nth-child(1) {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+#backstory_container div:nth-child(2) {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+#backstory_container div:nth-child(2) img {
+  max-width:100%;
+  border:solid 1px #ddd;
+  padding:1px;
 }
 
 footer {
@@ -208,6 +299,39 @@ footer ul {
   #specials_container > div:nth-child(3) {
     grid-column:1 / 4;
     grid-row: 3 / 4;
+  }
+
+  #testimonials_container > div:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1 /2;
+  }
+  #testimonials_container > div:nth-child(2) {
+    grid-column: 3 / 5;
+    grid-row: 1 /2;
+  }
+  #testimonials_container > div:nth-child(3) {
+    grid-column: 1 / 3;
+    grid-row: 2 /3;
+  }
+  #testimonials_container > div:nth-child(4) {
+    grid-column: 3 / 5;
+    grid-row: 2 /3;
+  }
+
+  
+
+  #backstory_container > div:nth-child(1) {
+    grid-column:1 / 2;
+    grid-row: 1 / 2;
+    text-align:center;
+  }
+  #backstory_container > div:nth-child(1) p {
+    text-align:left;
+  }
+  #backstory_container > div:nth-child(2) {
+    grid-column:1 / 2;
+    grid-row: 2 / 3;
+    text-align:center;
   }
 
   footer > div {

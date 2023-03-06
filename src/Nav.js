@@ -1,12 +1,14 @@
+//import { Link, Route, Switch } from "react-router-dom";
+
 const Nav = () => {
   return (
-    <ul class="horizontal_menu">
-      <li><a href="">Home</a></li>
-      <li><a href="">About</a></li>
-      <li><a href="">Menu</a></li>
-      <li><a href="">Reservations</a></li>
-      <li><a href="">Order Online</a></li>
-      <li><a href="">Login</a></li>
+    <ul className="horizontal_menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="about">About</a></li>
+      <li><a href="menu">Menu</a></li>
+      <li><a href="reservations">Reservations</a></li>
+      <li><a href="order">Order Online</a></li>
+      <li><a href="testimonials">Testimonials</a></li>
     </ul>
   );
 }
