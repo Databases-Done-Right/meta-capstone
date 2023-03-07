@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import DatePickerField from "./DatePickerField"
@@ -18,25 +19,37 @@ const validate = values => {
     }
     return errors;
   };
-  
-  const SignupForm = () => {
+
+  const BookingForm = (props) => {
+    const {updateTimes} = props;
+    const listTimes = props.times.map((time) =>
+      <option key={time} value={time}>{time}</option>
+    );
     // Pass the useFormik() hook initial form values, a validate function that will be called when
     // form values change or fields are blurred, and a submit function that will
     // be called when the form is submitted
     const formik = useFormik({
       initialValues: {
         dateDay: '2023-03-21',
-        dateTime: '17:30',
+        dateTime: '18:00',
         guestQty: '4',
+        ocassion: 'Anniversary',
         tableNumber: '5',
       },
       validate,
       onSubmit: values => {
-        alert(JSON.stringify(values, null, 2));
+        
+        props.submit(JSON.stringify(values, null, 2));
+        //alert(JSON.stringify(values, null, 2));
       },
     });
+
+    useEffect(() => {
+      updateTimes(formik.values.dateDay);
+    }, [formik.values.dateDay]);
+
     return (
-      <form onSubmit={formik.handleSubmit} id="tfn__reservations">
+      <form onSubmit={formik.handleSubmit} id="tfn__reservations" aria-label="Table Booking Form">
         <div>
           <label htmlFor="dateDay">Date</label>
           <input
@@ -50,13 +63,13 @@ const validate = values => {
         </div>
         <div>
           <label htmlFor="dateTime">Time</label>
-          <input
+          <select
             id="dateTime"
             name="dateTime"
-            type="time"
             onChange={formik.handleChange}
             value={formik.values.dateTime}
-          />
+          >{listTimes}
+          </select>
           {formik.errors.dateDay ? <div>{formik.errors.dateDay}</div> : null}
         </div>
         <div>
@@ -70,6 +83,19 @@ const validate = values => {
             min="1"
             max="16"
           />
+          {formik.errors.dateDay ? <div>{formik.errors.dateDay}</div> : null}
+        </div>
+        <div>
+          <label htmlFor="ocassion">Ocassion</label>
+          <select
+            id="ocassion"
+            name="ocassion"
+            onChange={formik.handleChange}
+            value={formik.values.ocassion}
+          >
+            <option value="Birthday">Birthday</option>
+            <option value="Anniversary">Anniversary</option>
+          </select>
           {formik.errors.dateDay ? <div>{formik.errors.dateDay}</div> : null}
         </div>
         <div>
@@ -90,4 +116,4 @@ const validate = values => {
     );
   };
 
-  export default SignupForm;
+  export default BookingForm;

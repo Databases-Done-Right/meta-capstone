@@ -190,7 +190,7 @@ ul.horizontal_menu li a, ul.horizontal_menu li a:visited {
 #tfn__reservations > div:nth-child(1) {
   margin-top:40px;
 }
-#tfn__reservations > div:nth-child(5) {
+#tfn__reservations > div:nth-child(6) {
   margin-top:40px;
   text-align:center;
 }
@@ -199,7 +199,8 @@ ul.horizontal_menu li a, ul.horizontal_menu li a:visited {
   padding-right:50px;
 }
 #tfn__reservations > div label { width:170px; min-width:170px; max-width:170px; display:inline-block; }
-#tfn__reservations > div input, #tfn__reservations > div select { width:180px; background-color:#ddd; border-radius:10px; padding:10px; font-size:1.2em; display:inline-block; }
+#tfn__reservations > div input, #tfn__reservations > div select { width:180px; background-color:#ddd; border-radius:10px; padding:10px; font-size:1.2em; display:inline-block; border:solid 2px #000; }
+#tfn__reservations > div select { width:204px; }
 
 #backstory_container {
   margin-top:100px;
