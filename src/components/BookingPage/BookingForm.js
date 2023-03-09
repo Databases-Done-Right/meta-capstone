@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import DatePickerField from "./DatePickerField"
 
 const validate = values => {
     const errors = {};
@@ -22,6 +21,7 @@ const validate = values => {
 
   const BookingForm = (props) => {
     const {updateTimes} = props;
+    const [submitDisabled, setSubmitDisabled] = useState(true)
     const listTimes = props.times.map((time) =>
       <option key={time} value={time}>{time}</option>
     );
@@ -30,88 +30,104 @@ const validate = values => {
     // be called when the form is submitted
     const formik = useFormik({
       initialValues: {
-        dateDay: '2023-03-21',
-        dateTime: '18:00',
-        guestQty: '4',
-        ocassion: 'Anniversary',
-        tableNumber: '5',
+        dateDay: '',
+        dateTime: '',
+        guestQty: '',
+        ocassion: '',
+        tableNumber: '',
       },
-      validate,
+      validationSchema: Yup.object({
+        dateDay: Yup.string().required("When were you thinking?"),
+        dateTime: Yup.string().required("What time would you like?"),
+        guestQty: Yup.string().required("How many are attending?"),
+        //ocassion: Yup.string().required("Are we celebrating a special event with you?"),
+      }),
       onSubmit: values => {
-        
         props.submit(JSON.stringify(values, null, 2));
         //alert(JSON.stringify(values, null, 2));
       },
     });
 
     useEffect(() => {
+      console.log(formik.touched.guestQty);
       updateTimes(formik.values.dateDay);
     }, [formik.values.dateDay]);
 
     return (
       <form onSubmit={formik.handleSubmit} id="tfn__reservations" aria-label="Table Booking Form">
         <div>
-          <label htmlFor="dateDay">Date</label>
+          <label htmlFor="dateDay" for="dateDay">Date</label>
           <input
             id="dateDay"
             name="dateDay"
             type="date"
             onChange={formik.handleChange}
             value={formik.values.dateDay}
+            value2={formik.touched.dateDay}
+            aria-label="What date are you interested in booking for?"
           />
-          {formik.errors.dateDay ? <div>{formik.errors.dateDay}</div> : null}
+          {formik.errors.dateDay && formik.touched.dateDay ? <div>{formik.errors.dateDay}</div> : null}
         </div>
         <div>
-          <label htmlFor="dateTime">Time</label>
+          <label htmlFor="dateTime" for="dateTime">Time</label>
           <select
             id="dateTime"
             name="dateTime"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             value={formik.values.dateTime}
-          >{listTimes}
+            aria-label="What time are you interested in booking for?"
+          ><option value=""></option>{listTimes}
           </select>
-          {formik.errors.dateDay ? <div>{formik.errors.dateDay}</div> : null}
+          {formik.errors.dateTime && formik.touched.dateTime ? <div>{formik.errors.dateTime}</div> : null}
         </div>
         <div>
-          <label htmlFor="guestQty"># of Guests</label>
+          <label htmlFor="guestQty" for="guestQty"># of Guests</label>
           <input
             id="guestQty"
             name="guestQty"
             type="number"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             value={formik.values.guestQty}
             min="1"
             max="16"
+            aria-label="How many will be dining?"
           />
-          {formik.errors.dateDay ? <div>{formik.errors.dateDay}</div> : null}
+          {formik.errors.guestQty && formik.touched.guestQty ? <div>{formik.errors.guestQty}</div> : null}
         </div>
         <div>
-          <label htmlFor="ocassion">Ocassion</label>
+          <label htmlFor="ocassion" for="ocassion">Ocassion</label>
           <select
             id="ocassion"
             name="ocassion"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             value={formik.values.ocassion}
+            aria-label="Is this a special ocassion?"
           >
-            <option value="Birthday">Birthday</option>
-            <option value="Anniversary">Anniversary</option>
+            <option value="Hungry" aria-label="Nothing special, I'm just hungry!">Just Hungry</option>
+            <option value="Birthday" aria-label="We are celebrating a birthday!">Birthday</option>
+            <option value="Anniversary" aria-label="We are celebrating an anniversary!">Anniversary</option>
           </select>
-          {formik.errors.dateDay ? <div>{formik.errors.dateDay}</div> : null}
+          {formik.errors.ocassion && formik.touched.ocassion ? <div>{formik.errors.ocassion}</div> : null}
         </div>
         <div>
-          <label htmlFor="tableNumber">Table #</label>
+          <label htmlFor="tableNumber" for="tableNumber">Table #</label>
           <input
             id="tableNumber"
             name="tableNumber"
             type="number"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             value={formik.values.tableNumber}
             min="1"
             max="12"
+            aria-label="Do you have a table preference?"
           />
-          {formik.errors.dateDay ? <div>{formik.errors.dateDay}</div> : null}
+          {formik.errors.tableNumber && formik.touched.tableNumber ? <div>{formik.errors.tableNumber}</div> : null}
         </div>
-        <div><button className="cta_button" type="submit">Continue</button></div>
+        <div><button className="cta_button" type="submit" disabled={!formik.isValid} aria-label="Submit Booking">Continue</button></div>
       </form>
     );
   };

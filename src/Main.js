@@ -6,6 +6,7 @@ import Testimonials from "./components/Testimonials/Testimonials"
 import ConfirmedBooking from "./components/ConfirmedBooking/ConfirmedBooking"
 import Backstory from "./components/Backstory/Backstory"
 import BookingPage from "./components/BookingPage/BookingPage"
+import SimpleHeader from "./components/SimpleHeader/SimpleHeader"
 import { Routes, Route } from "react-router-dom";
 import { fetchAPI, submitAPI } from "./components/BookingPage/BookingAPI";
 
@@ -40,8 +41,9 @@ const Main = () => {
           <Route path="/confirmed" element={<ConfirmedBooking />}></Route>
           <Route path="" element={<HomePage />}></Route>
           <Route path="/reservations" element={<BookingPage times={availableTimes} updateTimes={setAvailableTimes} submit={submitForm} />}></Route>
-          <Route path="/menu" element={<Specials />}></Route>
-          <Route path="/testimonials" element={<Testimonials />}></Route>
+          <Route path="/menu" element={<><SimpleHeader title="Our Specials" /><Specials /></>}></Route>
+          <Route path="/order" element={<><SimpleHeader title="Order Online" /><Specials /></>}></Route>
+          <Route path="/testimonials" element={<><SimpleHeader title="What Our Customers Are Saying" /><Testimonials /></>}></Route>
           <Route path="/about" element={<Backstory />}></Route>
         </Routes>
       </main>
